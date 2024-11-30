@@ -5,8 +5,11 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="ScottWlaschinsPBTSeries.fs"/>
+        <Compile Include="ScottWlaschinsPBTSeriesTests.fs"/>
         <Compile Include="Tests.fs"/>
         <Compile Include="Program.fs"/>
+        <None Include="ScottWlaschinsPBTSeriesInteractive.fsx"/>
     </ItemGroup>
 
     <ItemGroup>
