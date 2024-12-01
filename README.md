@@ -1,3 +1,4 @@
 # Property-based testing demos with dotnet
 
-TODO
+Learning PBT.
+
