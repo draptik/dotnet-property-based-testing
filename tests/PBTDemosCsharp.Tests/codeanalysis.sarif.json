@@ -11,7 +11,57 @@
         "language": "en-US"
       },
       "results": [
-      ]
+        {
+          "ruleId": "IDE0160",
+          "level": "warning",
+          "message": "Convert to block scoped namespace",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/patrick/projects/dotnet-property-based-testing/tests/PBTDemosCsharp.Tests/UnitTest1.cs",
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/patrick/projects/dotnet-property-based-testing/tests/PBTDemosCsharp.Tests/UnitTest1.cs",
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 10,
+                  "endColumn": 2
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "IDE0160": {
+          "id": "IDE0160",
+          "shortDescription": "Convert to block scoped namespace",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0160",
+          "properties": {
+            "category": "Style",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Telemetry",
+              "EnforceOnBuild_HighlyRecommended"
+            ]
+          }
+        }
+      }
     }
   ]
 }
