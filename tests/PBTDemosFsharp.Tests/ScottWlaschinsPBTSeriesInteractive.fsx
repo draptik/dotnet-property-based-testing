@@ -10,9 +10,9 @@ open FsCheck
 let addV0 x y = x * y
 
 let add1TwiceIsAdd2Property x =
-    let result1 = x |> addV0 1 |> addV0 1
-    let result2 = x |> addV0 2
-    result1 = result2
+  let result1 = x |> addV0 1 |> addV0 1
+  let result2 = x |> addV0 2
+  result1 = result2
 
 Check.Quick add1TwiceIsAdd2Property
 
@@ -62,9 +62,9 @@ Gen.sample 1 3 stringGenerator
 Gen.sample 10 3 stringGenerator
 
 type Color =
-    | Red
-    | Green of int
-    | Blue of bool
+  | Red
+  | Green of int
+  | Blue of bool
 
 let colorGenerator = Arb.generate<Color>
 Gen.sample 50 10 colorGenerator
@@ -112,7 +112,7 @@ Check.One(config, additionIsNotMultiplication)
 let preCondition x y = (x, y) <> (0, 0) && (x, y) <> (2, 2)
 
 let additionIsNotMultiplication_withPreCondition x y =
-    preCondition x y ==> additionIsNotMultiplication x y
+  preCondition x y ==> additionIsNotMultiplication x y
 
 Check.Quick additionIsNotMultiplication_withPreCondition
 
@@ -128,9 +128,9 @@ let leftIdentityProperty x = add x 0 = x
 let rightIdentityProperty x = add 0 x = x
 
 type AdditionSpecification =
-    static member ``Commutative`` x y = commutativeProperty x y
-    static member ``Associative`` x y z = associativeProperty x y z
-    static member ``Left Identity`` x = leftIdentityProperty x
-    static member ``Right Identity`` x = rightIdentityProperty x
+  static member ``Commutative`` x y = commutativeProperty x y
+  static member ``Associative`` x y z = associativeProperty x y z
+  static member ``Left Identity`` x = leftIdentityProperty x
+  static member ``Right Identity`` x = rightIdentityProperty x
 
 Check.QuickAll<AdditionSpecification>()
