@@ -8,17 +8,21 @@ open FsCheck.Xunit
 open Swensen.Unquote
 
 module HelloWorld =
+
   let reverseList (list: int list) : int list = list |> List.rev
 
   [<Fact>]
   let ``reversing a list twice gives original list`` () =
 
     let checkFn (aList: int list) =
-      let actual = aList |> reverseList |> reverseList
+      let actual = aList |> List.rev |> List.rev
       let expected = aList
       test <@ actual = expected @>
 
-    Check.Quick checkFn
+    // Check.Quick checkFn
+
+    // Using `Check.Verbose` only works on the command line, not in Rider.
+    Check.Verbose checkFn
 
 // FizzBuzz is actually an "advanced" example in the PBT context, because it requires knowledge of
 // Arbitraries and Generators
