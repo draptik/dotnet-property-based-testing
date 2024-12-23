@@ -128,6 +128,7 @@ module CustomerStuff =
       }
     }
 
+  // fails with (StdGen (1860965978, 297420262))
   [<Property(Skip = "TODO")>]
   let ``Verified customer has at least one name and valid email``
     (firstName: Option<NonEmptyString>, lastName: Option<NonEmptyString>, email: NonEmptyString)
