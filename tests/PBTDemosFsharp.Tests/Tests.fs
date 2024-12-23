@@ -5,7 +5,23 @@ open FsToolkit.ErrorHandling
 open Xunit
 open FsCheck
 open FsCheck.Xunit
+open Swensen.Unquote
 
+module HelloWorld =
+  let reverseList (list: int list) : int list = list |> List.rev
+
+  [<Fact>]
+  let ``reversing a list twice gives original list`` () =
+
+    let checkFn (aList: int list) =
+      let actual = aList |> reverseList |> reverseList
+      let expected = aList
+      test <@ actual = expected @>
+
+    Check.Quick checkFn
+
+// FizzBuzz is actually an "advanced" example in the PBT context, because it requires knowledge of
+// Arbitraries and Generators
 module FizzBuzzing =
 
   let fizzbuzz n =
