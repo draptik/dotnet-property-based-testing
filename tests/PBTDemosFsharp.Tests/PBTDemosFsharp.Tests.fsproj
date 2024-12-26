@@ -7,13 +7,16 @@
     <ItemGroup>
         <Compile Include="ScottWlaschinsPBTSeries.fs"/>
         <Compile Include="ScottWlaschinsPBTSeriesTests.fs"/>
-        <Compile Include="Tests.fs"/>
+        <Compile Include="Tests_xunit.fs" />
+        <Compile Include="Tests_nunit.fs" />
         <Compile Include="Program.fs"/>
         <None Include="ScottWlaschinsPBTSeriesInteractive.fsx"/>
     </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="FsToolkit.ErrorHandling"/>
+        <PackageReference Include="FsUnit" />
+        <PackageReference Include="NUnit" />
         <PackageReference Include="Unquote"/>
     </ItemGroup>
 

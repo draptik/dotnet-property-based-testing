@@ -1,4 +1,4 @@
-﻿module Tests
+﻿module Tests_xunit
 
 open System
 open FsToolkit.ErrorHandling
@@ -6,6 +6,7 @@ open Xunit
 open FsCheck
 open FsCheck.Xunit
 open Swensen.Unquote
+open FsUnit
 
 module HelloWorld =
 
@@ -13,16 +14,13 @@ module HelloWorld =
 
   [<Fact>]
   let ``reversing a list twice gives original list`` () =
-
     let checkFn (aList: int list) =
-      let actual = aList |> List.rev |> List.rev
-      let expected = aList
-      test <@ actual = expected @>
+      List.rev (List.rev aList) |> should equal aList
 
-    // Check.Quick checkFn
+    Check.Verbose checkFn
 
     // Using `Check.Verbose` only works on the command line, not in Rider.
-    Check.Verbose checkFn
+    // Check.Verbose checkFn
 
 // FizzBuzz is actually an "advanced" example in the PBT context, because it requires knowledge of
 // Arbitraries and Generators
