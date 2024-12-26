@@ -16,7 +16,7 @@ module HelloWorld =
     let checkFn (aList: int list) =
       List.rev (List.rev aList) |> should equal aList
 
-    Check.Verbose checkFn
+    Check.QuickThrowOnFailure checkFn
 
   // Using `Check.Verbose` only works on the command line, not in Rider.
   // Check.Verbose checkFn
