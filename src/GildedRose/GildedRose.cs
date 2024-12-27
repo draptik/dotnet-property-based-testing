@@ -1,5 +1,13 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace GildedRose;
 
+// This is an exercise, so we have to suppress some warnings
+[SuppressMessage("ReSharper", "ConvertToPrimaryConstructor")]
+[SuppressMessage("ReSharper", "InconsistentNaming")]
+[SuppressMessage("Style", "IDE0078:Use pattern matching")]
+[SuppressMessage("Style", "IDE0290:Use primary constructor")]
+[SuppressMessage("Style", "IDE1006:Naming Styles")]
 public class GildedRose
 {
   private readonly IList<Item> Items;

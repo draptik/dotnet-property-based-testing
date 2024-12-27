@@ -16,8 +16,6 @@
     <ItemGroup>
         <PackageReference Include="FsCheck.NUnit" />
         <PackageReference Include="FsToolkit.ErrorHandling"/>
-        <PackageReference Include="FsUnit"/>
-        <PackageReference Include="NUnit"/>
         <PackageReference Include="Unquote"/>
     </ItemGroup>
 

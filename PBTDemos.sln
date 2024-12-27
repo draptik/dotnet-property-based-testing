@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "tests\PBTDemosFsharp.Tests", "tests\PBTDemosFsharp.Tests\PBTDemosFsharp.Tests.fsproj", "{2F1FA2A1-45C0-4CC2-80AE-66E64D8BC5DC}"
 EndProject
