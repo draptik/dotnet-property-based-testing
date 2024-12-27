@@ -17,6 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFolder", "SolutionF
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		global.json = global.json
+		.gitattributes = .gitattributes
 	EndProjectSection
 EndProject
 Global
