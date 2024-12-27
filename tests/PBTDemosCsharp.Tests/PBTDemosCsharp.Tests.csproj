@@ -12,4 +12,8 @@
         <Using Include="Xunit"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <EditorConfigFiles Remove=".editorconfig" />
+    </ItemGroup>
+
 </Project>
