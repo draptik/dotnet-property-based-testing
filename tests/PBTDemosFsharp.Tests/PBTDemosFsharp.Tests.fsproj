@@ -1,22 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <GenerateProgramFile>false</GenerateProgramFile>
-    </PropertyGroup>
+  <PropertyGroup>
+    <GenerateProgramFile>false</GenerateProgramFile>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <Compile Include="ScottWlaschinsPBTSeries.fs"/>
-        <Compile Include="ScottWlaschinsPBTSeriesTests.fs"/>
-        <Compile Include="Tests_xunit.fs"/>
-        <Compile Include="Tests_nunit.fs"/>
-        <Compile Include="Program.fs"/>
-        <None Include="ScottWlaschinsPBTSeriesInteractive.fsx"/>
-    </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ScottWlaschinsPBTSeries.fs"/>
+    <Compile Include="ScottWlaschinsPBTSeriesTests.fs"/>
+    <Compile Include="Tests_xunit.fs"/>
+    <Compile Include="Tests_nunit.fs"/>
+    <Compile Include="Program.fs"/>
+    <None Include="ScottWlaschinsPBTSeriesInteractive.fsx"/>
+  </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="FsCheck.NUnit" />
-        <PackageReference Include="FsToolkit.ErrorHandling"/>
-        <PackageReference Include="Unquote"/>
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FsCheck.NUnit"/>
+    <PackageReference Include="FsToolkit.ErrorHandling"/>
+    <PackageReference Include="Unquote"/>
+  </ItemGroup>
 
 </Project>

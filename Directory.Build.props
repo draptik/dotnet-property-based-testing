@@ -1,17 +1,17 @@
 <Project>
-    <PropertyGroup>
-        <AnalysisLevel>latest-All</AnalysisLevel>
-        <ErrorLog>codeanalysis.sarif.json</ErrorLog>
-        <AnalysisLevel>preview-recommended</AnalysisLevel>
-        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-        <AnalysisMode>All</AnalysisMode>
-        <TargetFramework>net9.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <NeutralLanguage>en</NeutralLanguage>
-        <InvariantGlobalization>true</InvariantGlobalization>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <NoWarn>$(NoWarn);1591;1707</NoWarn>
-    </PropertyGroup>
+  <PropertyGroup>
+    <AnalysisLevel>latest-All</AnalysisLevel>
+    <ErrorLog>codeanalysis.sarif.json</ErrorLog>
+    <AnalysisLevel>preview-recommended</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <AnalysisMode>All</AnalysisMode>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <NeutralLanguage>en</NeutralLanguage>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591;1707</NoWarn>
+  </PropertyGroup>
 </Project>
-    <!-- vim:set filetype=xml : -->
+  <!-- vim:set filetype=xml : -->

@@ -12,18 +12,27 @@ public static class GildedRoseWrapper
 
     var sb = new StringBuilder();
 
-    for (var i = 0; i < days; i++)
+    for (var day = 0; day < days; day++)
     {
-      sb = sb.AppendLine($"-------- day {i}  --------");
+      sb = sb.AppendLine($"-------- day {day}  --------");
       sb = sb.AppendLine("name, sellIn, quality");
       sb = items.Aggregate(
-        sb, (current, t) =>
-          current.AppendLine(t.Name + " " + t.SellIn + " - " + t.Quality));
+        sb, (current, item) =>
+          current.AppendLine(item.Name + " " + item.SellIn + " - " + item.Quality));
       sb = sb.AppendLine("");
 
       app.UpdateQuality();
     }
 
     return sb.ToString();
+  }
+
+  // Helper method for updating a single item.
+  public static Item UpdateQuality(this Item item)
+  {
+    var items = new List<Item> { item };
+    var app = new GildedRose(items);
+    app.UpdateQuality();
+    return items.First();
   }
 }

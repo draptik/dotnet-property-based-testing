@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <ItemGroup>
-        <!-- Included to avoid warning NU1903 ("known high severity vulnerability") -->
-        <PackageReference Include="FluentAssertions"/>
-        <PackageReference Include="FsCheck.NUnit" />
-        <PackageReference Include="System.Net.Http"/>
-        <PackageReference Include="System.Security.Cryptography.X509Certificates"/>
-    </ItemGroup>
+  <ItemGroup>
+    <!-- Included to avoid warning NU1903 ("known high severity vulnerability") -->
+    <PackageReference Include="FluentAssertions"/>
+    <PackageReference Include="FsCheck.NUnit"/>
+    <PackageReference Include="System.Net.Http"/>
+    <PackageReference Include="System.Security.Cryptography.X509Certificates"/>
+  </ItemGroup>
 
-    <ItemGroup>
-        <Using Include="Xunit"/>
-    </ItemGroup>
+  <ItemGroup>
+    <Using Include="Xunit"/>
+  </ItemGroup>
 
 </Project>
