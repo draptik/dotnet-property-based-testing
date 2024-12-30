@@ -35,4 +35,9 @@ public static class GildedRoseWrapper
     app.UpdateQuality();
     return items.First();
   }
+
+  public static string ToString(this Item item)
+  {
+    return $"{item.Name} {item.SellIn} {item.Quality}";
+  }
 }

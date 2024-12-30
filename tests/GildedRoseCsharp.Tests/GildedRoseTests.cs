@@ -50,4 +50,34 @@ public class GildedRoseTests
 
 #pragma warning restore IDE0075
   }
+
+  // NOTE: class must be public static
+  public static class ItemArb
+  {
+    // NOTE: method must be public static
+    public static Arbitrary<Item> Generate()
+    {
+      var numberGen = Gen.Choose(1, 100);
+      var itemNameGen = Gen.Elements(
+        "Aged Brie",
+        "Backstage passes to a TAFKAL80ETC concert");
+
+      var itemGen =
+        from name in itemNameGen
+        from sellIn in numberGen
+        from quality in numberGen
+        select new Item { Name = name, SellIn = sellIn, Quality = quality };
+
+      return itemGen.ToArbitrary();
+    }
+  }
+
+  [Property(Arbitrary = [typeof(ItemArb)], Verbose = true)]
+  public bool SellIn_decreases_by_1_unless_it_is_Sulfuras_v2(Item item)
+  {
+    var actual = item.UpdateQuality();
+    return item.Name == "Sulfuras, Hand of Ragnaros"
+      ? actual.SellIn == item.SellIn
+      : actual.SellIn == item.SellIn - 1;
+  }
 }
