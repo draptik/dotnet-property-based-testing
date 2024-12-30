@@ -9,6 +9,6 @@ public class Item
 
   public override string ToString()
   {
-    return $"{Name} {SellIn} {Quality}";
+    return $"name: '{Name}', sellIn: '{SellIn}', quality: '{Quality}'";
   }
 }

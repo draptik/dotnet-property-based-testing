@@ -15,7 +15,6 @@ public class GildedRoseTests
     return actual.Quality is >= 0 and <= 50;
   }
 
-  // TODO: Create a generator with names from the domain
   [Property]
   public bool SellIn_decreases_by_1_unless_it_is_Sulfuras(string name, int sellIn, PositiveInt quality)
   {
@@ -51,15 +50,27 @@ public class GildedRoseTests
 #pragma warning restore IDE0075
   }
 
-  // NOTE: class must be public static
-  public static class ItemArb
+  [Property(Arbitrary = [typeof(ItemArb)], Verbose = true)]
+  public bool SellIn_decreases_by_1_unless_it_is_Sulfuras_v2(Item item)
+  {
+    var sellIn = item.SellIn; // store original value (item is mutable)
+    var actual = item.UpdateQuality();
+    return item.Name == "Sulfuras, Hand of Ragnaros"
+      ? actual.SellIn == sellIn
+      : actual.SellIn == sellIn - 1;
+  }
+
+  // NOTE: class must be static
+  private static class ItemArb
   {
     // NOTE: method must be public static
+    // ReSharper disable once UnusedMember.Local
     public static Arbitrary<Item> Generate()
     {
       var numberGen = Gen.Choose(1, 100);
       var itemNameGen = Gen.Elements(
         "Aged Brie",
+        "Sulfuras, Hand of Ragnaros",
         "Backstage passes to a TAFKAL80ETC concert");
 
       var itemGen =
@@ -70,14 +81,5 @@ public class GildedRoseTests
 
       return itemGen.ToArbitrary();
     }
-  }
-
-  [Property(Arbitrary = [typeof(ItemArb)], Verbose = true)]
-  public bool SellIn_decreases_by_1_unless_it_is_Sulfuras_v2(Item item)
-  {
-    var actual = item.UpdateQuality();
-    return item.Name == "Sulfuras, Hand of Ragnaros"
-      ? actual.SellIn == item.SellIn
-      : actual.SellIn == item.SellIn - 1;
   }
 }
