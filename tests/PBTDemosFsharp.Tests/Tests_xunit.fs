@@ -123,9 +123,9 @@ module FizzBuzzing =
 module CustomerStuff =
 
   type UnverifiedCustomer = {
-    FirstName: string
-    LastName: string
-    Email: string
+    FirstName: string option
+    LastName: string option
+    Email: string option
   }
 
   type VerifiedCustomer = { FullName: string; Email: string }
@@ -133,48 +133,42 @@ module CustomerStuff =
   let verifyCustomer (unverified: UnverifiedCustomer) : Result<VerifiedCustomer, string> =
     result {
       let! email =
-        if unverified.Email |> String.IsNullOrEmpty then
-          Error "Email is required"
-        else
-          Ok unverified.Email
+        unverified.Email
+        |> Option.map Ok
+        |> Option.defaultValue (Error "Email is required")
 
-      return {
-        FullName =
-          match unverified.FirstName, unverified.LastName with
-          | firstName, lastName when not (String.IsNullOrEmpty firstName) && not (String.IsNullOrEmpty lastName) ->
-            $"{firstName} {lastName}"
-          | firstName, _ when not (String.IsNullOrEmpty firstName) -> firstName
-          | _, lastName -> lastName
-        Email = email
-      }
+      let! fullName =
+        match unverified.FirstName, unverified.LastName with
+        | Some firstName, Some lastName -> $"{firstName} {lastName}" |> Ok
+        | Some fn, _ -> fn |> Ok
+        | _, Some ln -> ln |> Ok
+        | None, None -> Error "First and/or Last Name is required"
+
+      return { FullName = fullName; Email = email }
     }
 
-  // fails with (StdGen (1860965978, 297420262))
-  [<Property(Skip = "TODO")>]
-  let ``Verified customer has at least one name and valid email``
-    (firstName: Option<NonEmptyString>, lastName: Option<NonEmptyString>, email: NonEmptyString)
+  [<Property>]
+  let ``Verified customer has a full name and valid email``
+    (firstName: NonEmptyString option, lastName: NonEmptyString option, email: NonEmptyString option)
     =
-    let unverified = {
-      FirstName = firstName |> Option.map _.Get |> Option.defaultValue ""
-      LastName = lastName |> Option.map _.Get |> Option.defaultValue ""
-      Email = email.Get
+
+    // helper function: maps `NonEmptyString option` to `string option`
+    let toOptionString (input: NonEmptyString option) =
+      match input with
+      | None -> None
+      | Some value -> value.Get |> Some
+
+    let unverified: UnverifiedCustomer = {
+      FirstName = firstName |> toOptionString
+      LastName = lastName |> toOptionString
+      Email = email |> toOptionString
     }
 
     match verifyCustomer unverified with
     | Ok verified ->
-      (not (String.IsNullOrEmpty unverified.FirstName)
-       || not (String.IsNullOrEmpty unverified.LastName))
-      && verified.Email = unverified.Email
-      && verified.FullName = match unverified.FirstName, unverified.LastName with
-                             | firstName, lastName when
-                               not (String.IsNullOrEmpty firstName) && not (String.IsNullOrEmpty lastName)
-                               ->
-                               $"{firstName} {lastName}"
-                             | firstName, _ when not (String.IsNullOrEmpty firstName) -> firstName
-                             | _, lastName -> lastName
-    | Error _ ->
-      String.IsNullOrEmpty unverified.FirstName
-      && String.IsNullOrEmpty unverified.LastName
+      verified.Email = unverified.Email.Value // EMail has the correct value
+      && not (String.IsNullOrWhiteSpace(verified.FullName)) // FullName has a value
+    | Error _ -> true // unverified inputs are recognized as invalid
 
 module GildedRose =
 
