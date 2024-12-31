@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <!-- Included to avoid warning NU1903 ("known high severity vulnerability") -->
+    <PackageReference Include="CsCheck" />
     <PackageReference Include="FluentAssertions"/>
     <PackageReference Include="FsCheck.NUnit"/>
     <PackageReference Include="System.Net.Http"/>
