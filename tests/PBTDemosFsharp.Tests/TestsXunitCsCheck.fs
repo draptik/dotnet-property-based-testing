@@ -4,7 +4,7 @@ open CsCheck
 open Swensen.Unquote
 open Xunit
 
-[<Fact(Skip = "Fails on purpose")>]
-let foo () =
-  Gen.String.Sample (fun s ->
-    test <@ s = "a" @>)
+[<Fact>]
+let ``generated numbers are in scope`` () =
+  let gen = Gen.Int.Positive.Where(fun x -> x < 100)
+  gen.Sample(fun s -> test <@ s < 100 @>)

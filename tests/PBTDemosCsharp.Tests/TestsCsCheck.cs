@@ -1,12 +1,16 @@
 using CsCheck;
 
+using FluentAssertions;
+
 namespace PBTDemosCsharp.Tests;
 
 public class TestsCsCheck
 {
-  [Fact(Skip = "Fails on purpose")]
-  public void Failing_test()
+  [Fact]
+  public void Generated_numbers_are_in_scope()
   {
-    Gen.String.Sample(s => Assert.Equal("a", s));
+    var gen = Gen.Int.Positive.Where(x => x < 100);
+    gen.Sample(s =>
+      s.Should().BeLessThan(100));
   }
 }
