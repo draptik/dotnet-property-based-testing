@@ -152,11 +152,14 @@ module CustomerStuff =
     (firstName: NonEmptyString option, lastName: NonEmptyString option, email: NonEmptyString option)
     =
 
+    let sanitizeNonEmpty (s: string) =
+      if String.IsNullOrWhiteSpace(s) then "a" else s
+
     // helper function: maps `NonEmptyString option` to `string option`
     let toOptionString (input: NonEmptyString option) =
       match input with
       | None -> None
-      | Some value -> value.Get |> Some
+      | Some value -> value.Get |> sanitizeNonEmpty |> Some
 
     let unverified: UnverifiedCustomer = {
       FirstName = firstName |> toOptionString
