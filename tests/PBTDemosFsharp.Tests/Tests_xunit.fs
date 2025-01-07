@@ -25,6 +25,12 @@ module HelloWorld =
     let expected = aList
     actual = expected
 
+  [<Property(Verbose = true)>]
+  let ``reversing a list twice gives original list - version 2 (verbose)`` (aList: int list) =
+    let actual = aList |> List.rev |> List.rev
+    let expected = aList
+    actual = expected
+
 // FizzBuzz is actually an "advanced" example in the PBT context, because it requires knowledge of
 // Arbitraries and Generators
 module FizzBuzzing =
