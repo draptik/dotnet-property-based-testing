@@ -10,14 +10,18 @@
     <Compile Include="Tests_xunit.fs"/>
     <Compile Include="Tests_nunit.fs"/>
     <Compile Include="TestsXunitCsCheck.fs"/>
+    <Compile Include="TestsXunitHedgehog.fs"/>
     <Compile Include="Program.fs"/>
     <None Include="ScottWlaschinsPBTSeriesInteractive.fsx"/>
+    <None Include="HedgehogInteractive.fsx"/>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CsCheck"/>
     <PackageReference Include="FsCheck.NUnit"/>
     <PackageReference Include="FsToolkit.ErrorHandling"/>
+    <PackageReference Include="Hedgehog"/>
+    <PackageReference Include="Hedgehog.Xunit"/>
     <PackageReference Include="Unquote"/>
   </ItemGroup>
 
