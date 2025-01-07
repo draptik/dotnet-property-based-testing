@@ -268,3 +268,18 @@ module GildedRose =
 
     let updatedItem = updateQuality item
     if sellIn <= 0 then updatedItem.Quality = 0 else true
+
+module VersionShrinkingDemo =
+
+  [<Fact(Skip = "Failing Demo w/ Shrinker")>]
+  let ``random version numbers shrinking demo`` () =
+    let versionListArb =
+      Arb.generate<byte>
+      |> Gen.map int
+      |> Gen.three
+      |> Gen.map (fun (ma, mi, bu) -> Version(ma, mi, bu))
+      |> Gen.listOf
+      |> Arb.fromGen
+
+    let property xs = xs |> List.rev = xs
+    Prop.forAll versionListArb property |> Check.QuickThrowOnFailure

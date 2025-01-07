@@ -4,6 +4,7 @@ open System
 open CsCheck
 open Swensen.Unquote
 open Xunit
+open Xunit.Abstractions
 
 [<Fact>]
 let ``generated numbers are in scope`` () =
@@ -35,3 +36,23 @@ let ``each input must be correct`` () =
         x.TrueForAll(fun el -> el.MyInt > 0 && el.MyString.Length >= 10 && el.MyString.Length <= 20)
 
       actual = true)
+
+type VersionShrinkingDemo(output: ITestOutputHelper) =
+
+  // Adopted from https://github.com/AnthonyLloyd/CsCheck/blob/330d8a497949b4dba18d94efe24d94441de0e53a/Comparison.md?plain=1#L40
+  [<Fact(Skip = "Failing Demo w/ Shrinker")>]
+  let ``random version number shrinking demo`` () =
+    let versionListGenerator: Gen<Version> =
+      Gen.Byte
+        .Select(int)
+        .Select(fun x -> (x, x, x))
+        .Select(fun (ma, mi, bu) -> Version(ma, mi, bu))
+
+    let reverse (xs: Collections.Generic.List<'a>) = xs |> Seq.toList |> List.rev
+
+    versionListGenerator.List.Sample(fun xs ->
+      let input = xs |> Seq.toList
+      let actual = reverse xs
+      output.WriteLine($"input: %A{input}")
+      output.WriteLine($"actual: %A{actual}")
+      Check.Equal(actual, input))

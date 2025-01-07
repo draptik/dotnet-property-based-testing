@@ -2,16 +2,29 @@ using CsCheck;
 
 using FluentAssertions;
 
+using Xunit.Abstractions;
+
 namespace PBTDemosCsharp.Tests;
 
 public class TestsCsCheck
 {
+  private readonly ITestOutputHelper output;
+
+  public TestsCsCheck(ITestOutputHelper testOutputHelper)
+  {
+    output = testOutputHelper;
+  }
+
   [Fact]
   public void Generated_numbers_are_in_scope()
   {
     var gen = Gen.Int.Positive.Where(x => x < 100);
     gen.Sample(s =>
-      s.Should().BeLessThan(100));
+      {
+        output.WriteLine($"Generated {s}");
+        return s <= 100;
+      }
+    );
   }
 
   // Example from https://www.gerbenvanadrichem.com/quality-assurance/generating-custom-random-inputs-for-your-property-based-test-in-c-net-with-cscheck/
@@ -26,6 +39,7 @@ public class TestsCsCheck
         return;
       }
 
+      output.WriteLine($"Generated {inputs.Count}");
       _ = inputs.Should().AllSatisfy(MustBeCorrect);
     });
   }

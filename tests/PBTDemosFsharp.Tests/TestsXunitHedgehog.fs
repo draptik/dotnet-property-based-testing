@@ -10,7 +10,7 @@ let ``hello world`` (xs: int list) =
   // xs |> List.rev = xs // <- fails
   xs |> List.rev |> List.rev = xs
 
-[<Fact>]
+[<Fact(Skip = "Failing Demo w/ Shrinker")>]
 let ``Version demo with default shrinking - v1`` () =
   let versionGenerator =
     Range.constantBounded ()
@@ -36,7 +36,7 @@ let versionGenerator2 =
 type MyGenContainer =
   static member __ = GenX.defaults |> AutoGenConfig.addGenerator versionGenerator2
 
-[<Property(typeof<MyGenContainer>)>]
+[<Property(typeof<MyGenContainer>, Skip = "Failing Demo w/ Shrinker")>]
 let ``Version demo with default shrinking - v2`` (versions: Version list) =
   // versions |> List.rev |> List.rev = versions
   versions |> List.rev = versions // <- this fails on purpose!
