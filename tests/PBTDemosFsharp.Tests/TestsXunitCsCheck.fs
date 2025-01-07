@@ -18,16 +18,30 @@ type MyClass = {
 [<Fact>]
 let ``each input must be correct`` () =
 
-  // let toCSharpFunc (f: Gen<'a> -> bool) : Func<Gen<'a>, bool> =
-  //   Func<Gen<'a>, bool>(f)
+  // let mapToCSharpFunc f =
+  //   Func<int, string, MyClass>(f)
+  //
+  // let myClassGenerator : Gen<MyClass> =
+  //     Gen.Select(
+  //       Gen.Int.Positive,
+  //       Gen.String[10, 20],
+  //       mapToCSharpFunc (fun i s -> { MyInt = i; MyString = s }))
 
   let myClassGenerator : Gen<MyClass> =
       Gen.Select(
-        Gen.Int,
+        Gen.Int.Positive,
         Gen.String[10, 20],
-        fun (i, s) -> { MyInt = i; MyString = s })
+        Func<int, string, MyClass>(fun i s -> { MyInt = i; MyString = s }))
 
-  let gs = myClassGenerator.List
-
-  let f a : unit = ()
-  Check.Sample(gs, f)
+  myClassGenerator.List.Sample(fun x ->
+    if x.Count = 0 then
+      true = true
+    else
+      let actual =
+        x.TrueForAll(fun el ->
+          el.MyInt > 0 &&
+          el.MyString.Length >= 10 &&
+          el.MyString.Length <= 20
+        )
+      actual = true
+  )
