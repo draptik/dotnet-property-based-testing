@@ -26,7 +26,6 @@
     <PackageVersion Include="xunit" Version="2.9.2"/>
     <!-- Included to avoid warning NU1903 ("known high severity vulnerability") -->
     <PackageVersion Include="System.Net.Http" Version="4.3.4"/>
-    <PackageVersion Include="System.Security.Cryptography.X509Certificates" Version="4.3.2"/>
   </ItemGroup>
 </Project>
   <!-- vim:set filetype=xml : -->
