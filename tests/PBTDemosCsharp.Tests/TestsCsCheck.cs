@@ -6,22 +6,15 @@ using Xunit.Abstractions;
 
 namespace PBTDemosCsharp.Tests;
 
-public class TestsCsCheck
+public class TestsCsCheck(ITestOutputHelper testOutputHelper)
 {
-  private readonly ITestOutputHelper output;
-
-  public TestsCsCheck(ITestOutputHelper testOutputHelper)
-  {
-    output = testOutputHelper;
-  }
-
   [Fact]
   public void Generated_numbers_are_in_scope()
   {
     var gen = Gen.Int.Positive.Where(x => x < 100);
     gen.Sample(s =>
       {
-        output.WriteLine($"Generated {s}");
+        testOutputHelper.WriteLine($"Generated {s}");
         return s <= 100;
       }
     );
@@ -39,7 +32,7 @@ public class TestsCsCheck
         return;
       }
 
-      output.WriteLine($"Generated {inputs.Count}");
+      testOutputHelper.WriteLine($"Generated {inputs.Count}");
       _ = inputs.Should().AllSatisfy(MustBeCorrect);
     });
   }
