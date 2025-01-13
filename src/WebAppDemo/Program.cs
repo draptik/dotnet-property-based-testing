@@ -41,16 +41,18 @@ app.MapGet("/api/todo", () =>
 
 app.Run();
 
+// required for WebApplicationFactory in test:
+public partial class Program { }
 
 internal record CreateTodoItemRequest(string Title, string? Details);
 
-internal readonly record struct TodoItemId(Guid Value);
+public readonly record struct TodoItemId(Guid Value);
 
-internal readonly record struct Title(string Value);
+public readonly record struct Title(string Value);
 
-internal readonly record struct Details(string Value);
+public readonly record struct Details(string Value);
 
-internal readonly record struct TodoItem
+public readonly record struct TodoItem
 {
   public TodoItem(string title, string? details)
   {
