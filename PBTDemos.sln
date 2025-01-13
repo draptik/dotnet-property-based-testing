@@ -21,12 +21,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFolder", "SolutionF
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A9AC4252-B665-4B6F-901F-98C89C2D4797}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose", "src\GildedRose\GildedRose.csproj", "{024824B1-9098-46D2-A43F-8BBF795D93AC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRoseCsharp.Tests", "tests\GildedRoseCsharp.Tests\GildedRoseCsharp.Tests.csproj", "{122AB113-95AF-4030-8DA0-BDA0F9E2BB10}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "GildedRoseFsharp.Tests", "tests\GildedRoseFsharp.Tests\GildedRoseFsharp.Tests.fsproj", "{28F58004-B8CC-4814-B3C0-8FB424E0D0C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppDemo", "src\WebAppDemo\WebAppDemo.csproj", "{C854F28B-03B2-4667-A736-9379196E6FB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,6 +59,10 @@ Global
 		{28F58004-B8CC-4814-B3C0-8FB424E0D0C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28F58004-B8CC-4814-B3C0-8FB424E0D0C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28F58004-B8CC-4814-B3C0-8FB424E0D0C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C854F28B-03B2-4667-A736-9379196E6FB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C854F28B-03B2-4667-A736-9379196E6FB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C854F28B-03B2-4667-A736-9379196E6FB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C854F28B-03B2-4667-A736-9379196E6FB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2E1AF3B7-8365-4645-919B-9A82478F1C92} = {22995262-CA22-4468-A90A-01AA15ADEAAC}
@@ -61,5 +70,6 @@ Global
 		{024824B1-9098-46D2-A43F-8BBF795D93AC} = {A9AC4252-B665-4B6F-901F-98C89C2D4797}
 		{122AB113-95AF-4030-8DA0-BDA0F9E2BB10} = {22995262-CA22-4468-A90A-01AA15ADEAAC}
 		{28F58004-B8CC-4814-B3C0-8FB424E0D0C5} = {22995262-CA22-4468-A90A-01AA15ADEAAC}
+		{C854F28B-03B2-4667-A736-9379196E6FB2} = {A9AC4252-B665-4B6F-901F-98C89C2D4797}
 	EndGlobalSection
 EndGlobal

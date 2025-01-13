@@ -1,0 +1,21 @@
+@WebAppDemo_HostAddress = http://localhost:5090
+
+GET {{WebAppDemo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+### Create a TodoItem - Successful Request
+PUT {{WebAppDemo_HostAddress}}/api/todo HTTP/1.1
+Content-Type: application/json
+
+{
+    "Title": "Test Todo",
+    "Details": "Test Details"
+}
+
+### Create a TodoItem without details - Successful Request
+PUT {{WebAppDemo_HostAddress}}/api/todo HTTP/1.1
+Content-Type: application/json
+
+{
+    "Title": "Test Todo"
+}
