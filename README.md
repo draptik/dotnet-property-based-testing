@@ -13,6 +13,6 @@ Goal: Comparing C# and F# usage
 - documentation
 - external API design: do we have to dive into the source code to understand usage?
 - differences:
-  - generators / arbitraries
-  - performance
-  - shrinker
+    - generators / arbitraries
+    - performance
+    - shrinker
