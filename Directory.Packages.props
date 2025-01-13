@@ -8,24 +8,25 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageVersion>
-    <PackageVersion Include="CsCheck" Version="4.2.0" />
-    <PackageVersion Include="FluentAssertions" Version="7.0.0" />
-    <PackageVersion Include="FsCheck.NUnit" Version="2.16.6" />
-    <PackageVersion Include="FsCheck.Xunit" Version="2.16.6" />
-    <PackageVersion Include="FSharp.Core" Version="8.0.300" />
-    <PackageVersion Include="FsToolkit.ErrorHandling" Version="4.18.0" />
-    <PackageVersion Include="Hedgehog" Version="0.13.0" />
-    <PackageVersion Include="Hedgehog.Xunit" Version="0.6.0" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
-    <PackageVersion Include="NUnit" Version="3.13.1" />
-    <PackageVersion Include="Unquote" Version="7.0.1" />
+    <PackageVersion Include="CsCheck" Version="4.2.0"/>
+    <PackageVersion Include="FluentAssertions" Version="7.0.0"/>
+    <PackageVersion Include="FsCheck.NUnit" Version="2.16.6"/>
+    <PackageVersion Include="FsCheck.Xunit" Version="2.16.6"/>
+    <PackageVersion Include="FSharp.Core" Version="8.0.300"/>
+    <PackageVersion Include="FsToolkit.ErrorHandling" Version="4.18.0"/>
+    <PackageVersion Include="Hedgehog" Version="0.13.0"/>
+    <PackageVersion Include="Hedgehog.Xunit" Version="0.6.0"/>
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0"/>
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.12.0"/>
+    <PackageVersion Include="NUnit" Version="3.13.1"/>
+    <PackageVersion Include="Unquote" Version="7.0.1"/>
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageVersion>
-    <PackageVersion Include="xunit" Version="2.9.3" />
+    <PackageVersion Include="xunit" Version="2.9.3"/>
     <!-- Included to avoid warning NU1903 ("known high severity vulnerability") -->
-    <PackageVersion Include="System.Net.Http" Version="4.3.4" />
+    <PackageVersion Include="System.Net.Http" Version="4.3.4"/>
   </ItemGroup>
 </Project>
-<!-- vim:set filetype=xml : -->
+  <!-- vim:set filetype=xml : -->
