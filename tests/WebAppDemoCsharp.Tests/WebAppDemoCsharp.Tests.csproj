@@ -3,7 +3,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing"/>
   </ItemGroup>
-  
+
   <ItemGroup>
     <Using Include="Xunit"/>
   </ItemGroup>
