@@ -7,6 +7,11 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = false
 
+# JSON ------------------------------------------------------------------------
+[*.json]
+indent_size = 2
+tab_width = 2
+
 # Xml-like files --------------------------------------------------------------
 [*.{xml,csproj,fsproj,props}]
 indent_size = 2
