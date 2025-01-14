@@ -1,7 +1,6 @@
 #r "nuget:Hedgehog"
 
 open Hedgehog
-open System
 
 let version =
   Range.constantBounded ()
