@@ -8,10 +8,7 @@ open Xunit
 open FsCheck
 open FsCheck.Xunit
 
-type Request = {
-  Title: string
-  Details: string
-}
+type Request = { Title: string; Details: string }
 
 [<Fact>]
 let ``create todo item should return created`` () =
@@ -26,7 +23,11 @@ let ``create todo item should return created`` () =
     use client = factory.CreateClient()
 
     let url = "/api/todo"
-    let request = { Title = "title1"; Details = "details1" }
+
+    let request = {
+      Title = "title1"
+      Details = "details1"
+    }
 
     // Act
     let! response = client.PutAsJsonAsync(url, request)

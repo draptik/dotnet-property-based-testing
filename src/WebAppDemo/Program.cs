@@ -42,7 +42,9 @@ app.MapGet("/api/todo", () =>
 app.Run();
 
 // required for WebApplicationFactory in test:
-public partial class Program { }
+public partial class Program
+{
+}
 
 internal record CreateTodoItemRequest(string Title, string? Details);
 

@@ -1,20 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <GenerateProgramFile>false</GenerateProgramFile>
-    </PropertyGroup>
+  <PropertyGroup>
+    <GenerateProgramFile>false</GenerateProgramFile>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <Compile Include="TodoApiTests.fs" />
-        <Compile Include="Program.fs"/>
-    </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TodoApiTests.fs"/>
+    <Compile Include="Program.fs"/>
+  </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\..\src\WebAppDemo\WebAppDemo.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\WebAppDemo\WebAppDemo.csproj"/>
+  </ItemGroup>
 
-    <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing"/>
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing"/>
+  </ItemGroup>
 
 </Project>
