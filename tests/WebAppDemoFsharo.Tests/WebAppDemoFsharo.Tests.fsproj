@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <GenerateProgramFile>false</GenerateProgramFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="TodoApiTests.fs" />
+        <Compile Include="Program.fs"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\WebAppDemo\WebAppDemo.csproj" />
+    </ItemGroup>
+
+</Project>
