@@ -12,6 +12,7 @@
     <InvariantGlobalization>true</InvariantGlobalization>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591;1707</NoWarn>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
 </Project>
   <!-- vim:set filetype=xml : -->
