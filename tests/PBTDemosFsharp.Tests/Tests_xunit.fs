@@ -126,7 +126,14 @@ module FizzBuzzing =
     [<Property(Arbitrary = [| typeof<DivisibleByFifteenArb> |])>]
     let ``Divisible by 15`` number = (fizzbuzz number) = "FizzBuzz"
 
-// see https://web.archive.org/web/20240910144730/https://blog.ploeh.dk/2021/06/28/property-based-testing-is-not-the-same-as-partition-testing/
+// Ported from Mark Seemann's Haskell examples:
+//
+// https://web.archive.org/web/20240910144730/https://blog.ploeh.dk/2021/06/28/property-based-testing-is-not-the-same-as-partition-testing/
+//
+// The above examples have one major flaw: The generation of test data is closely coupled to the implementation.
+//
+// Here is a cleaner solution.
+//
 // Finding these property is the hard part...
 module FizzBuzzingDoneCorrectly =
 
@@ -137,9 +144,25 @@ module FizzBuzzingDoneCorrectly =
     | _, 0 -> "Buzz"
     | _, _ -> n.ToString()
 
+  let fizzBuzzDeveloperFromHell1 n =
+    if n % 15 = 0 then "FizzBuzz" else "2112"
+
+  let fizzBuzzDeveloperFromHell2 n =
+    match n % 3, n % 5 with
+    | _, 0 -> "FizzBuzz"
+    | 0, _ -> "Fizz"
+    | _, _ -> "2112"
+
+  let fizzBuzzDeveloperFromHell3 n =
+    match n % 3, n % 5 with
+    | 0, 0 -> "FizzBuzz"
+    | 0, _ -> "Fizz"
+    | _, 0 -> "Buzz"
+    | _, _ -> "2112"
+
   [<Property>]
   let ``at least one number in 3 consecutive values`` (i: int) =
-    let range = [i..i+2]
+    let range = [ i .. i + 2 ]
 
     let tryToNumber (s: string) =
       match Int32.TryParse(s) with
@@ -148,6 +171,9 @@ module FizzBuzzingDoneCorrectly =
 
     let actual =
       range
+      // |> List.map fizzBuzzDeveloperFromHell1
+      // |> List.map fizzBuzzDeveloperFromHell2
+      // |> List.map fizzBuzzDeveloperFromHell3
       |> List.map fizzBuzz
       |> List.map tryToNumber
       |> List.choose id
@@ -157,22 +183,26 @@ module FizzBuzzingDoneCorrectly =
 
   [<Property>]
   let ``only one Buzz in 5 consecutive values`` (i: int) =
-    let range = [i..i+4]
+    let range = [ i .. i + 4 ]
 
     let actual =
       range
+      // |> List.map fizzBuzzDeveloperFromHell2
+      // |> List.map fizzBuzzDeveloperFromHell3
       |> List.map fizzBuzz
-      |> List.filter (fun s -> s.EndsWith("Buzz"))
+      |> List.filter _.EndsWith("Buzz")
       |> List.length
 
     actual = 1
 
   [<Property>]
   let ``at least one literal Buzz in 10 values`` (i: int) =
-    let range = [i..i+9]
+    let range = [ i .. i + 9 ]
 
     let actual =
       range
+      // |> List.map fizzBuzzDeveloperFromHell2
+      // |> List.map fizzBuzzDeveloperFromHell3
       |> List.map fizzBuzz
       |> List.filter (fun s -> s = "Buzz")
       |> List.length
@@ -181,7 +211,7 @@ module FizzBuzzingDoneCorrectly =
 
   [<Property>]
   let ``numbers round-trip (there-and-back-again)`` (i: int) =
-    let range = [i..i+2]
+    let range = [ i .. i + 2 ]
 
     let tryToNumber (s: string) =
       match Int32.TryParse(s) with
