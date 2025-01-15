@@ -126,6 +126,22 @@ module FizzBuzzing =
     [<Property(Arbitrary = [| typeof<DivisibleByFifteenArb> |])>]
     let ``Divisible by 15`` number = (fizzbuzz number) = "FizzBuzz"
 
+// see https://web.archive.org/web/20240910144730/https://blog.ploeh.dk/2021/06/28/property-based-testing-is-not-the-same-as-partition-testing/
+module FizzBuzzingDoneCorrectly =
+
+  let fizzBuzz n =
+    match n % 3, n % 5 with
+    | 0, 0 -> "FizzBuzz"
+    | 0, _ -> "Fizz"
+    | _, 0 -> "Buzz"
+    | _, _ -> n.ToString()
+
+  [<Property>]
+  let ``at least one number in three consecutive numbers`` (i: int) =
+    let range = [i..i+2]
+    let actual = range |> List.map (fun n -> fizzBuzz n)
+    true = true
+
 module CustomerStuff =
 
   type UnverifiedCustomer = {
