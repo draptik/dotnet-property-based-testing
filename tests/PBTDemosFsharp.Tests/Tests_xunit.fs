@@ -31,8 +31,10 @@ module HelloWorld =
     let expected = aList
     actual = expected
 
-// FizzBuzz is actually an "advanced" example in the PBT context, because it requires knowledge of
-// Arbitraries and Generators
+(*
+FizzBuzz is actually an "advanced" example in the PBT context, because it requires knowledge of
+Arbitraries and Generators
+*)
 module FizzBuzzing =
 
   let fizzbuzz n =
@@ -126,15 +128,17 @@ module FizzBuzzing =
     [<Property(Arbitrary = [| typeof<DivisibleByFifteenArb> |])>]
     let ``Divisible by 15`` number = (fizzbuzz number) = "FizzBuzz"
 
-// Ported from Mark Seemann's Haskell examples:
-//
-// https://web.archive.org/web/20240910144730/https://blog.ploeh.dk/2021/06/28/property-based-testing-is-not-the-same-as-partition-testing/
-//
-// The above examples have one major flaw: The generation of test data is closely coupled to the implementation.
-//
-// Here is a cleaner solution.
-//
-// Finding these property is the hard part...
+(*
+The above examples have one major flaw: The generation of test data is closely coupled to the implementation.
+
+Here is a cleaner solution.
+
+Finding these properties is the hard part...
+
+Ported from Mark Seemann's Haskell examples:
+
+https://web.archive.org/web/20240910144730/https://blog.ploeh.dk/2021/06/28/property-based-testing-is-not-the-same-as-partition-testing/
+*)
 module FizzBuzzingDoneCorrectly =
 
   let fizzBuzz n =
