@@ -10,8 +10,8 @@
     </PackageVersion>
     <PackageVersion Include="CsCheck" Version="4.2.0"/>
     <PackageVersion Include="FluentAssertions" Version="7.0.0"/>
-    <PackageVersion Include="FsCheck.NUnit" Version="2.16.6"/>
-    <PackageVersion Include="FsCheck.Xunit" Version="2.16.6"/>
+    <PackageVersion Include="FsCheck.NUnit" Version="[2.16.6]"/>
+    <PackageVersion Include="FsCheck.Xunit" Version="[2.16.6]"/>
     <PackageVersion Include="FSharp.Core" Version="9.0.101"/>
     <PackageVersion Include="FsToolkit.ErrorHandling" Version="4.18.0"/>
     <PackageVersion Include="Hedgehog" Version="0.13.0"/>
