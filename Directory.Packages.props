@@ -11,17 +11,17 @@
     <PackageVersion Include="CsCheck" Version="4.2.0"/>
     <PackageVersion Include="FsCheck.NUnit" Version="[2.16.6]"/>
     <PackageVersion Include="FsCheck.Xunit" Version="[2.16.6]"/>
-    <PackageVersion Include="FSharp.Core" Version="9.0.101"/>
+    <PackageVersion Include="FSharp.Core" Version="9.0.201"/>
     <PackageVersion Include="FsToolkit.ErrorHandling" Version="4.18.0"/>
     <PackageVersion Include="Hedgehog" Version="0.13.0"/>
     <PackageVersion Include="Hedgehog.Xunit" Version="0.6.0"/>
-    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="9.0.1"/>
-    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="9.0.1"/>
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.12.0"/>
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="9.0.3"/>
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3"/>
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.13.0"/>
     <PackageVersion Include="NUnit" Version="3.13.1"/>
     <PackageVersion Include="Shouldly" Version="4.3.0"/>
     <PackageVersion Include="Unquote" Version="7.0.1"/>
-    <PackageVersion Include="xunit.runner.visualstudio" Version="3.0.1">
+    <PackageVersion Include="xunit.runner.visualstudio" Version="3.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageVersion>
