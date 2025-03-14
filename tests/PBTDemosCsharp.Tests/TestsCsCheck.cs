@@ -1,6 +1,6 @@
 using CsCheck;
 
-using FluentAssertions;
+using Shouldly;
 
 using Xunit.Abstractions;
 
@@ -25,29 +25,37 @@ public class TestsCsCheck(ITestOutputHelper testOutputHelper)
   public void EachInputMustBeCorrect()
   {
     // NOTE: The `Sample` function is invoked after calling the `List` property on the `Generate` property.
-    MyGenerator.Generate.List.Sample(inputs =>
-    {
-      if (inputs.Count == 0)
+    MyGenerator.Generate.List.Sample(
+      inputs =>
       {
-        return;
-      }
+        if (inputs.Count == 0)
+        {
+          return;
+        }
 
-      testOutputHelper.WriteLine($"Generated {inputs.Count}");
-      _ = inputs.Should().AllSatisfy(MustBeCorrect);
-    });
+        // testOutputHelper.WriteLine($"Generated {inputs.Count}");
+        inputs.ShouldAllBe(x => MustBeCorrect(x));
+      });
   }
 
   // NOTE: This is the "Property" being tested
-  private void MustBeCorrect(MyClass obj)
+  private static bool MustBeCorrect(MyClass obj)
   {
-    _ = obj.MyInt.Should().BeGreaterThan(0);
-    _ = obj.MyString.Should().Match(s => s == "\u274c" || s == "\u2713" || (s.Length >= 10 && s.Length <= 20));
+    var b1 = obj.MyInt > 0;
+    var s = obj.MyString;
+    var b2 = s == "\u274c" || s == "\u2713" || s.Length is >= 10 and <= 20;
+    return b1 && b2;
   }
 
   private class MyClass
   {
     public int MyInt { get; init; }
     public required string MyString { get; init; }
+
+    public override string ToString()
+    {
+      return $"MyInt: {MyInt}, MyString: {MyString}";
+    }
   }
 
   private static class MyGenerator
