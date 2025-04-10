@@ -29,16 +29,6 @@ tab_width = 2
 fsharp_multiline_bracket_style = stroustrup
 fsharp_newline_before_multiline_computational_expression = false
 
-# Verify settings -------------------------------------------------------------
-[*.{received,verified}.{json,txt,xml}]
-charset = "utf-8-bom"
-end_of_line = lf
-indent_size = unset
-indent_style = unset
-insert_final_newline = false
-tab_width = unset
-trim_trailing_whitespace = false
-
 # C# files --------------------------------------------------------------------
 [*.cs]
 
@@ -403,4 +393,3 @@ dotnet_naming_style.s_camelcase.required_prefix = s_
 dotnet_naming_style.s_camelcase.required_suffix =
 dotnet_naming_style.s_camelcase.word_separator =
 dotnet_naming_style.s_camelcase.capitalization = camel_case
-
