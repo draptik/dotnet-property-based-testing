@@ -1,6 +1,7 @@
 ﻿module GildedRoseTests
 
 open FsCheck
+open FsCheck.FSharp
 open FsCheck.Xunit
 open GildedRose
 
@@ -46,9 +47,10 @@ type ItemArb =
           "Sulfuras, Hand of Ragnaros"
           "Backstage passes to a TAFKAL80ETC concert"
         ]
-
       let! sellIn = Gen.choose (1, 100)
-      let! quality = Arb.generate<PositiveInt>
+      let! quality =
+        Gen.choose (1, System.Int32.MaxValue)
+        |> Gen.map PositiveInt
       return generateItem name sellIn quality
     }
     |> Arb.fromGen

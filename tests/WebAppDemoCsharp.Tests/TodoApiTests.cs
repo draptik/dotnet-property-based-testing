@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http.Json;
 
 using FsCheck;
+using FsCheck.Fluent;
 using FsCheck.Xunit;
 
 using Microsoft.AspNetCore.Mvc.Testing;
