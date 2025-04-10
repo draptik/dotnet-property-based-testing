@@ -4,6 +4,7 @@ open System
 open FsToolkit.ErrorHandling
 open Xunit
 open FsCheck
+open FsCheck.FSharp
 open FsCheck.Xunit
 
 module HelloWorld =
@@ -280,10 +281,12 @@ module VersionShrinkingDemo =
   [<Fact(Skip = "Failing Demo w/ Shrinker")>]
   let ``random version numbers shrinking demo`` () =
     let versionListArb =
-      Arb.generate<byte>
-      |> Gen.map int
-      |> Gen.three
-      |> Gen.map (fun (ma, mi, bu) -> Version(ma, mi, bu))
+      gen {
+        let! major = Gen.choose (0, 255)
+        let! minor = Gen.choose (0, 255)
+        let! build = Gen.choose (0, 255)
+        return Version(major, minor, build)
+      }
       |> Gen.listOf
       |> Arb.fromGen
 
