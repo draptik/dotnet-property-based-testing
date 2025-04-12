@@ -70,3 +70,15 @@ let ``One User, some songs`` () =
       Assert.Empty actual
     }
     :> Task
+
+[<Fact>]
+let ``One verified recommendation`` () = task {
+    let srv = FakeSongService ()
+    srv.Scrobble ("cat", Song (1, false, 6uy),     10)
+    srv.Scrobble ("ana", Song (1, false, 5uy),     10)
+    srv.Scrobble ("ana", Song (2,  true, 5uy), 9_9990)
+    let sut = RecommendationsProvider srv
+
+    let! actual = sut.GetRecommendationsAsync "cat"
+
+    Assert.Equal<Song> ([ Song (2, true, 5uy) ], actual) } :> Task
