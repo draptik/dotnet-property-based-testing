@@ -1,0 +1,6 @@
+{
+  "stryker-config": {
+    "solution": "../../PBTDemos.sln",
+    "project": "SongRecommendations.csproj"
+  }
+}
