@@ -13,4 +13,8 @@
       <ProjectReference Include="..\..\src\SongRecommendations\SongRecommendations.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Include="README.md" />
+    </ItemGroup>
+
 </Project>
