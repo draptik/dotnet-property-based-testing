@@ -1,8 +1,8 @@
 module SongServiceTests
 
+open SongRecommendations
 open System
 open System.Threading.Tasks
-open SongRecommendations
 open Xunit
 open FsCheck.FSharp
 open FsCheck.Xunit
@@ -11,8 +11,8 @@ open FsCheck.Xunit
 [<Fact>]
 let ``No Data (icebreaker test)`` () =
   task {
-    let srvc = FakeSongService ()
-    let sut = RecommendationsProvider srvc
+    let srv = FakeSongService ()
+    let sut = RecommendationsProvider srv
     let! actual = sut.GetRecommendationsAsync "user name without data"
     Assert.Empty actual
   }
@@ -37,13 +37,17 @@ module Gen =
 
 [<Property>]
 let ``No Data (property-based test)`` () =
-  Gen.userName |> Arb.fromGen |> Prop.forAll <| fun userName ->
+  Gen.userName
+  |> Arb.fromGen
+  |> Prop.forAll
+  <| fun userName ->
     task {
-      let srvc = FakeSongService ()
-      let sut = RecommendationsProvider srvc
+      let srv = FakeSongService ()
+      let sut = RecommendationsProvider srv
       let! actual = sut.GetRecommendationsAsync userName
       Assert.Empty actual
-    } :> Task
+    }
+    :> Task
 
 [<Property>]
 let ``One User, some songs`` () =
@@ -56,11 +60,13 @@ let ``One User, some songs`` () =
     return (user, Array.zip songs scrobbleCounts)
   }
   |> Arb.fromGen
-  |> Prop.forAll <| fun (user, scrobbles) ->
+  |> Prop.forAll
+  <| fun (user, scrobbles) ->
     task {
-      let srvc = FakeSongService ()
-      scrobbles |> Array.iter (fun (s, c) -> srvc.Scrobble (user, s, c))
-      let sut = RecommendationsProvider srvc
+      let srv = FakeSongService ()
+      scrobbles |> Array.iter (fun (s, c) -> srv.Scrobble (user, s, c))
+      let sut = RecommendationsProvider srv
       let! actual = sut.GetRecommendationsAsync user
       Assert.Empty actual
-    } :> Task
+    }
+    :> Task
