@@ -33,7 +33,7 @@ module HelloWorld =
     actual = expected
 
 (*
-FizzBuzz is actually an "advanced" example in the PBT context, because it requires knowledge of
+FizzBuzz is actually an "advanced" example in the PBT context because it requires knowledge of
 Arbitraries and Generators
 *)
 module FizzBuzzing =
@@ -303,7 +303,7 @@ module GildedRose =
             SellIn = item.SellIn - 1
             Quality = newQuality
       }
-    | "Sulfuras, Hand of Ragnaros" -> item // Legendary item, does not change
+    | "Sulfuras, Hand of Ragnaros" -> item // Legendary item does not change
     | "Backstage passes to a TAFKAL80ETC concert" ->
       let newQuality =
         if item.SellIn > 10 then item.Quality + 1
